@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<section name="Workbench">
-	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
-		<item value="/Users/teresalasarow/Eclipse_WorkSpace/Verteilte Systeme/HeartBeatProject/rmi.interfaces"/>
-		<item value="/Users/teresalasarow/Eclipse_WorkSpace/Verteilte Systeme/HeartBeatProject/Spotify_Service"/>
-		<item value="/Users/teresalasarow/Eclipse_WorkSpace/Verteilte Systeme/HeartBeatProject/Heartbeat_Server"/>
-		<item value="/Users/teresalasarow/Eclipse_WorkSpace/Verteilte Systeme/HeartBeatProject/Heartbeat_Client"/>
-	</list>
-</section>

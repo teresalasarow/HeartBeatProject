@@ -6,6 +6,7 @@ import java.rmi.registry.Registry;
 
 public class PlayerClient implements Remote {
 	
+	//we need to think of the registry, because we can not create the same registry in both Heartbeat_Client and Player_Service
 	public static void main(String[] args) {
 		try {
 			PlayerImpl player = new PlayerImpl();

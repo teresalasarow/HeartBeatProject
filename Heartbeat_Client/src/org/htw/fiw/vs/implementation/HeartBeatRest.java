@@ -5,7 +5,6 @@ import java.rmi.RemoteException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.json.simple.JSONObject;
@@ -22,7 +21,7 @@ public class HeartBeatRest {
 		JSONParser parser = new JSONParser();
 		JSONObject json = (JSONObject) parser.parse(msg);
 		String rateString = (String) json.get("rate");
-		
+
 		int heartrate = Integer.parseInt(rateString);
 		HeartBeatImpl heartBeat = HeartBeatImpl.getInstance();
 

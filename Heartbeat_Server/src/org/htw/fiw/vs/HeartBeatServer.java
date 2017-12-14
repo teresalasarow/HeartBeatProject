@@ -1,17 +1,16 @@
 package src.org.htw.fiw.vs;
 
-import java.net.MalformedURLException;
 import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 import rmi.interfaces.IHeartBeatObserver;
 import rmi.interfaces.IHeartBeatSubject;
-import rmi.interfaces.IPlayer;
 
 public class HeartBeatServer extends UnicastRemoteObject implements IHeartBeatObserver {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	protected HeartBeatServer() throws RemoteException {
 		super();
 	}
@@ -19,32 +18,34 @@ public class HeartBeatServer extends UnicastRemoteObject implements IHeartBeatOb
 	public static void main(String[] args) {
 		try {
 			IHeartBeatSubject hbsubject = (IHeartBeatSubject) Naming.lookup("//localhost:8080/HeartBeat");
-			
+
 			HeartBeatServer hbserver = new HeartBeatServer();
 			hbsubject.subscribeObject(hbserver);
-		} catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
+	// Commented out the player part because it is not implemented yet.
 	@Override
 	public void update(int heartrate) {
-		System.out.println("Got heartrate: " + heartrate);
-		
 		try {
-			IPlayer player = (IPlayer) Naming.lookup("//localhost:8080/Player");
-			if(heartrate < 79) {
-				player.killMusic();
+			// IPlayer player = (IPlayer) Naming.lookup("//localhost:8080/Player");
+			if (heartrate < 79) {
+				System.out.println("Kill music!");
+				// player.killMusic();
 			}
-			if(heartrate > 79 && heartrate < 120) {
-				int volume = heartrate/2;
-				player.turnVolumeDownTo(volume);
+			if (heartrate > 79 && heartrate < 120) {
+				int volume = heartrate / 2;
+				System.out.println("Turn Volume down to: " + volume);
+				// player.turnVolumeDownTo(volume);
+			}
+			else {
+				System.out.println("Don't do anything!");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 }
-

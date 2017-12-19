@@ -16,7 +16,7 @@ public class HeartBeatClient implements Remote {
 			HeartBeatImpl heartBeat = HeartBeatImpl.getInstance();
 			Registry registry = LocateRegistry.createRegistry(8080);
 			registry.bind("HeartBeat", heartBeat);
-			HttpServer server = GrizzlyHttpServerFactory.createHttpServer(URI.create("http://localhost:8080"),
+			HttpServer server = GrizzlyHttpServerFactory.createHttpServer(URI.create("http://localhost:9080"),
 					new ResourceConfig(HeartBeatRest.class));
 
 			System.out.println("Press any key to close");

@@ -32,7 +32,7 @@ public class HeartBeatImpl extends java.rmi.server.UnicastRemoteObject implement
 		return this.heartbeat;
 	}
 
-	// die funktion k�nnte von dem REST call aufgerufen werden? Und w�rde dann den
+	// die funktion koennte von dem REST call aufgerufen werden? Und wuerde dann den
 	// state setzen und die beaobachter benachrichtigen?
 	public void setHeartBeat(int heartbeat) throws RemoteException {
 		this.heartbeat = heartbeat;

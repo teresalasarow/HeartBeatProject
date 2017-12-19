@@ -28,7 +28,7 @@ public class PlayerClient implements Remote {
 			registry.list();
 			registry.rebind("Player", player);
 			System.out.println("located 8080 Registry");
-			player.turnVolumeDownTo(10);
+			player.turnVolumeDownTo(-10);
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();

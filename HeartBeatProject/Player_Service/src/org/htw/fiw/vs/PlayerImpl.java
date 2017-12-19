@@ -19,6 +19,7 @@ import sun.audio.*;
 public class PlayerImpl extends java.rmi.server.UnicastRemoteObject implements IPlayer {
 
 	private static final long serialVersionUID = 1L;
+	//float vol;
 
 	protected PlayerImpl() throws RemoteException {
 		super();
@@ -30,14 +31,14 @@ public class PlayerImpl extends java.rmi.server.UnicastRemoteObject implements I
 		Media hit = new Media(new File(bip).toURI().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(hit);
 		mediaPlayer.play();*/
-		
+		//this.vol = (float)volume;
 		{
 			//creates AudioInputStream
 		    AudioInputStream audioInputStream = null;
 		    Clip clip = null;
 			try {
 				//creates AudioInputStream
-				audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/Berlina/git/HeartBeatProject/Player_Service/resources/Explosion.wav"));
+				audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/Shared/Reallusion/Template/CrazyTalk Animator 3 Template/Sound/Partners In Rhyme/Sparrow.WAV"));
 			} catch (UnsupportedAudioFileException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -57,7 +58,9 @@ public class PlayerImpl extends java.rmi.server.UnicastRemoteObject implements I
 		    //gets control for Volume change
 		    FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 		    // Reduce volume by 10 decibels
-		    gainControl.setValue(-10.0f); 
+		    //gainControl.setValue(-10.0f); 
+		    //gainControl.setValue(vol);
+		    gainControl.setValue(Math.round(volume));
 		    clip.start();
 		  }
 	

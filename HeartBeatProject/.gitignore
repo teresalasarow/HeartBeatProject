@@ -1,2 +1,8 @@
 /.metadata/
 /.recommenders/
+.DS_Store
+/.DS_Store
+../Heartbeat_Client/.DS_Store
+../Heartbeat_Client/bin/.DS_Store
+../Heartbeat_Server/.DS_Store
+../rmi.interfaces/.DS_Store

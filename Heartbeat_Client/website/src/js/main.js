@@ -27,7 +27,28 @@ function heartbeatSlide(value) {
 }
 
 function heartbeatChange() {
-    console.log('send to api: ' + heartbeatValue);
+
+    console.log('try send to rest-api: ' + heartbeatValue);
+
+    try {
+        $.ajax({
+        		type: "POST",
+    			url: 'http://localhost:9080/HeartBeat',
+    			data: JSON.stringify({rate: heartbeatValue}),
+        
+            contentType: "application/json; charset=utf-8",
+            success: function(data){
+                console.log('success');
+                console.log(data);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                console.log('error');
+            }
+        });
+    } catch(ex) {
+        console.log('error catched');
+        console.log(ex);
+    }
 }
 
 

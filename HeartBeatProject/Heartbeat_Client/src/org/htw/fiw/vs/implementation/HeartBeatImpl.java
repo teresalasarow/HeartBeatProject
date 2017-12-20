@@ -10,6 +10,9 @@ import rmi.interfaces.IHeartBeatSubject;
 public class HeartBeatImpl extends java.rmi.server.UnicastRemoteObject implements IHeartBeatSubject {
 
 	private static HeartBeatImpl instance = null;
+	private static final long serialVersionUID = 1L;
+	int heartbeat;
+	List<IHeartBeatObserver> observerList = new ArrayList<IHeartBeatObserver>();
 
 	protected HeartBeatImpl() throws RemoteException {
 		super();
@@ -21,11 +24,6 @@ public class HeartBeatImpl extends java.rmi.server.UnicastRemoteObject implement
 		}
 		return instance;
 	}
-
-	private static final long serialVersionUID = 1L;
-	int heartbeat;
-
-	List<IHeartBeatObserver> observerList = new ArrayList<IHeartBeatObserver>();
 
 	@Override
 	public int getHeartBeat() throws RemoteException {

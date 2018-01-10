@@ -40,7 +40,11 @@ public class HeartBeatServer extends UnicastRemoteObject implements IHeartBeatOb
 	@Override
 	public void update(int heartrate) {
 		try {
-			if (heartrate <= 79) {
+			if (0 <= heartrate && heartrate <= 10) {
+				player.killMusic();
+				player.playTone(heartrate);
+			}
+			else if (heartrate <= 79) {
 				System.out.println("Kill music!");
 				player.killMusic();
 			}

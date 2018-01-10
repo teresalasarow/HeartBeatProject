@@ -31,9 +31,6 @@ html, body {
     flex-direction: column;
 }
 
-
-
-
 #slider {
     width: 50%;
 }
@@ -45,9 +42,8 @@ html, body {
 
 }
 
-
 #beating-heart {
     font-size: 120px;
     font-weight: bold;
-    color: red;
+    color: black;
 }

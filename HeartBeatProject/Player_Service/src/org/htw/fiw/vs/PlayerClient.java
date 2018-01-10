@@ -1,39 +1,26 @@
 package src.org.htw.fiw.vs;
 
 import java.rmi.AlreadyBoundException;
+import java.rmi.NotBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.rmi.server.ExportException;
+
+import org.htw.fiw.vs.IBinder;
 
 public class PlayerClient implements Remote {
 	
-	public static void main(String[] args) throws AlreadyBoundException {
-		Registry registry = null;
-		try {
+	public static void main(String[] args) throws AlreadyBoundException, NotBoundException {
+		try {			
 			PlayerImpl player = new PlayerImpl();
-			try {
-				//creates Registry if not there
-				registry = LocateRegistry.createRegistry(8080);
-				registry.bind("Player", player);
-				System.out.println("created 8080 Registry");
-				
-			} catch (ExportException e) {
-				e.printStackTrace();
-				
-			}
-			//gets Registry which already exists or which was just created from HeartBeatClient
-			registry = LocateRegistry.getRegistry(8080);
-			registry.list();
-			registry.rebind("Player", player);
-			System.out.println("located 8080 Registry");
-			player.turnVolumeDownTo(-10);
-			
+			Registry registry = LocateRegistry.getRegistry("141.45.152.61", 1099);
+			IBinder binder = (IBinder) registry.lookup("binder");
+					
+			binder.bind("team3/PlayerService", player);	
+			System.out.println("located and binded to Registry");				
 		} catch (RemoteException e) {
 			e.printStackTrace();
-		}
-		
+		}		
 	}
-
 }

@@ -4,15 +4,12 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
-import rmi.interfaces.IHeartBeatObserver;
-import rmi.interfaces.IHeartBeatSubject;
+import org.htw.fiw.vs.heartbeat.IHeartBeatObserver;
+import org.htw.fiw.vs.heartbeat.IHeartBeatSubject;
 
 public class HeartBeatImpl extends java.rmi.server.UnicastRemoteObject implements IHeartBeatSubject {
 
 	private static HeartBeatImpl instance = null;
-	private static final long serialVersionUID = 1L;
-	int heartbeat;
-	List<IHeartBeatObserver> observerList = new ArrayList<IHeartBeatObserver>();
 
 	protected HeartBeatImpl() throws RemoteException {
 		super();
@@ -24,6 +21,11 @@ public class HeartBeatImpl extends java.rmi.server.UnicastRemoteObject implement
 		}
 		return instance;
 	}
+
+	private static final long serialVersionUID = 1L;
+	int heartbeat;
+
+	List<IHeartBeatObserver> observerList = new ArrayList<IHeartBeatObserver>();
 
 	@Override
 	public int getHeartBeat() throws RemoteException {
